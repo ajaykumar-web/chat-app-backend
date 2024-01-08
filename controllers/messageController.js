@@ -1,5 +1,4 @@
 const Messages = require("../models/messageModel");
-const fs = require("fs");
 exports.getMessages = async (req, res, next) => {
   try {
     const { from, to } = req.body;
