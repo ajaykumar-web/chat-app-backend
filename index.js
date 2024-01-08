@@ -12,7 +12,7 @@ app.use(cors());
 app.use(express.json());
 
 mongoose
-  .connect(process.env.MONGO_URL, {
+  .connect("mongodb+srv://ajayakay1:ajayakay1@cluster0.colmp9b.mongodb.net", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -26,9 +26,7 @@ mongoose
 app.use("/api/auth", authRoutes);
 app.use("/api/messages", messageRoutes);
 
-const server = app.listen(process.env.PORT, () =>
-  console.log(`Server started on ${process.env.PORT}`)
-);
+const server = app.listen(5000, () => console.log(`Server started on ${5000}`));
 const io = socket(server, {
   cors: {
     origin: "http://localhost:3000",
