@@ -6,11 +6,10 @@ const messageRoutes = require("./routes/messages");
 const app = express();
 const socket = require("socket.io");
 require("dotenv").config();
-const fs = require("fs");
-
+var bodyParser = require("body-parser");
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(express.json());
-
 mongoose
   .connect("mongodb+srv://ajayakay1:ajayakay1@cluster0.colmp9b.mongodb.net", {
     useNewUrlParser: true,
@@ -29,7 +28,7 @@ app.use("/api/messages", messageRoutes);
 const server = app.listen(5000, () => console.log(`Server started on ${5000}`));
 const io = socket(server, {
   cors: {
-    origin: "https://chat-app-frontend-seven-brown.vercel.app",
+    origin: "http://localhost:3000",
     credentials: true,
   },
 });

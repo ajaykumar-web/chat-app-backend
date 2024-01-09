@@ -20,7 +20,6 @@ exports.getMessages = async (req, res, next) => {
 };
 
 exports.addMessage = async (req, res, next) => {
-  console.log(req.body);
   try {
     const { from, to, message } = req.body;
     const data = await Messages.create({
